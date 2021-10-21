@@ -148,6 +148,9 @@ impl contracts::NativeContract for GuessNumber {
                     return Err(TransactionError::BadOrigin);
                 }
                 self.random_number = GuessNumber::gen_random_number(context);
+                if self.random_number <0{
+                    self.random_number*=-1;
+                }
                 Ok(())
             }
             Command::SetOwner { owner } => {
